@@ -63,19 +63,29 @@ const publicProIcon = path.join(__dirname, '../public/pro_icon.svg');
   execSync(`rm -rf ${itemPath}`);
 });
 
-// 将 replace-source-code 的内容覆盖到 ../ 中
-execSync(`cp -r ${path.join(__dirname, './replace-source-code/*')} ${path.join(__dirname, '../')}`);
-
 const args = process.argv.slice(2);
 
 let title = '后台管理系统';
 let username = 'admin';
 let password = '123456';
+let language = 'zh-CN';
 
-if (args.length === 3) {
-  title = args[0];
-  username = args[1];
-  password = args[2];
+if (args.length > 0) {
+  title = args[0] ? args[0] : '后台管理系统';
+  username = args[1] ? args[1] : 'admin';
+  password = args[2] ? args[2] : '123456';
+  language = args[3] ? args[3] : 'zh-CN';
+}
+
+// 将 replace-source-code 的内容覆盖到 ../ 中
+if (language === 'en-US') {
+  execSync(
+    `cp -r ${path.join(__dirname, './replace-source-code-en/*')} ${path.join(__dirname, '../')}`
+  );
+} else {
+  execSync(
+    `cp -r ${path.join(__dirname, './replace-source-code/*')} ${path.join(__dirname, '../')}`
+  );
 }
 
 replaceInFile(path.join(__dirname, '../config/defaultSettings.ts'), '{{title}}', title);
