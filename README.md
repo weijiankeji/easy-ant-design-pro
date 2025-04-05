@@ -12,6 +12,6 @@ PS：如果需要 `Logo` , 在项目的 `public` 文件夹下放上 `logo.png` �
 1. Use `pro create xx` to create a project
 2. In the project, execute `pro i18n-remove --locale=en-US --write`
 3. Put easy-ant-design-pro in the root directory of the project
-4. Execute `node ./easy-ant-design-pro/index.mjs Management System Name User Name Password en-US`
+4. Execute `node ./easy-ant-design-pro/index.mjs "Management System Name" "User Name" Password en-US`
 
 PS: If you need `Logo`, put `logo.png` in the `public` folder of the project
